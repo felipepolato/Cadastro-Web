@@ -1,4 +1,5 @@
 import React from "react";
+import FormRegisters from "../../components/FormRegistrs";
 
 ///style////////////////////////////////
 // import {  } from "./style";
@@ -6,7 +7,8 @@ import React from "react";
 export default function ScreenRegistration() {
   return (
     <div>
-     ScreenRegistration
+      ScreenRegistration
+      <FormRegisters />
     </div>
   );
 }
