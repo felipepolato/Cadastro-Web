@@ -10,13 +10,13 @@ export default function Routers() {
     <BrowserRouter>
       <Switch>
         <Route exact path={"/"}>
+          <ScreenRegistration/>
+        </Route>
+        <Route exact path={"/home"}>
           <ScreenHome/>
         </Route>
         <Route exact path={"/login"}>
           <ScreenLogin/>
-        </Route>
-        <Route exact path={"/registration"}>
-          <ScreenRegistration/>
         </Route>
         <Route>
           <div>Página não encontrada</div>

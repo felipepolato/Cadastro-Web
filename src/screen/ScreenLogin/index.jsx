@@ -1,4 +1,5 @@
 import React from "react";
+import FormLogin from "../../components/FormLogin";
 
 ///style////////////////////////////////
 // import {  } from "./style";
@@ -6,7 +7,7 @@ import React from "react";
 export default function ScreenLogin() {
   return (
     <div>
-     ScreenLogin
+     <FormLogin/>
     </div>
   );
 }
