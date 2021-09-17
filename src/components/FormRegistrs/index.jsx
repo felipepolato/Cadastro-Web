@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
+/////Style/////////////
+import { Container, Content, Form, Address, User } from "./style";
 
 export default function FormRegisters() {
   const [name, setName] = useState("");
@@ -50,81 +54,86 @@ export default function FormRegisters() {
   };
 
   return (
-    <form type="submit">
-      <label>
-        Nome
-        <input name="name" type="text" required onChange={hendlerName} />
-      </label>
+    <Container>
+      <Content>
+        <Form type="submit">
+          <p>Dados do Usuário</p>
 
-      <label>
-        E-mail
-        <input name="email" type="email" required onChange={hendlerEmail} />
-      </label>
-      <p>Endereço do Usuário</p>
+          <User>
+            <div>
+              <label>Nome</label>
+              <input name="name" type="text" required onChange={hendlerName} />
 
-      <label>
-        País
-        <input name="pais" type="text" required onChange={hendlerPais} />
-      </label>
+              <label>E-mail</label>
+              <input
+                name="email"
+                type="email"
+                required
+                onChange={hendlerEmail}
+              />
+            </div>
 
-      <label>
-        Município
-        <input
-          name="municiopio"
-          type="text"
-          required
-          onChange={hendlerMunicipio}
-        />
-      </label>
+            <div>
+              <label for="CPF">CPF:</label>
+              <input
+                name="CPF"
+                id="CPF"
+                required
+                pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
+                onChange={hendlerCpf}
+              />
 
-      <label>
-        Estado
-        <input name="estado" type="text" required onChange={hendlerEstado} />
-      </label>
+              <label for="PIS">PIS:</label>
+              <input name="PIS" id="PIS" required onChange={hendlerPis} />
+            </div>
+          </User>
 
-      <label for="CEP">
-        CEP:
-        <input
-          name="CEP"
-          id="CEP"
-          required
-          pattern="\d{5}-\d{3}"
-          onChange={hendlerCep}
-        />
-      </label>
+          <p>Endereço do Usuário</p>
 
-      <label for="CPF">
-        CPF:
-        <input
-          name="CPF"
-          id="CPF"
-          required
-          pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
-          onChange={hendlerCpf}
-        />
-      </label>
+          <Address>
+            <div>
+              <label>País</label>
+              <input name="pais" type="text" required onChange={hendlerPais} />
 
-      <label for="PIS">
-        PIS:
-        <input
-          name="PIS"
-          id="PIS"
-          required
-          onChange={hendlerPis}
-        />
-      </label>
+              <label>Município</label>
+              <input
+                name="municiopio"
+                type="text"
+                required
+                onChange={hendlerMunicipio}
+              />
+              <div>
+                <label>Estado</label>
+                <input
+                  name="estado"
+                  type="text"
+                  required
+                  onChange={hendlerEstado}
+                />
+                <label for="CEP">CEP:</label>
+                <input
+                  name="CEP"
+                  id="CEP"
+                  required
+                  pattern="\d{5}-\d{3}"
+                  onChange={hendlerCep}
+                />
+                <div>
+                  <label>Senha:</label>
+                  <input
+                    name="password"
+                    type="password"
+                    required
+                    onChange={hendlerSenha}
+                  />
+                </div>
+              </div>
+            </div>
+          </Address>
 
-      <label>
-        Senha:
-        <input
-          name="password"
-          type="password"
-          required
-          onChange={hendlerSenha}
-        />
-      </label>
-
-      <button>Enviar</button>
-    </form>
+          <button>Enviar</button>
+        </Form>
+      </Content>
+    </Container>
   );
 }
