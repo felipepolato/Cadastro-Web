@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 
+/////Style/////////////
+import { Container, Content, Form } from "./style";
+
 export default function FormLogin() {
   const [pis, setPis] = useState("");
   const [senha, setSenha] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
+
   const history = useHistory("");
 
   const hendlerCpf = (event) => {
@@ -28,12 +32,17 @@ export default function FormLogin() {
     history.push("/");
   };
 
+  const goToHome = () => {
+    history.push("/home");
+  };
+
   return (
-    <div>
+    <Container>
         <p>Olá, Visitante!</p>
-      <form type="submit">
-        <label for="CPF">
-          CPF:
+      <Content>
+
+        <Form type="submit">
+          <label for="CPF">CPF:</label>
           <input
             name="CPF"
             id="CPF"
@@ -41,27 +50,23 @@ export default function FormLogin() {
             pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
             onChange={hendlerCpf}
           />
-        </label>
 
-        <label>
-          E-mail/ PIS
+          <label>E-mail/ PIS:</label>
           <input name="email" type="email" required onChange={hendlerEmail} />
-        </label>
 
-        <label>
-          Senha:
+          <label>Senha:</label>
           <input
             name="password"
             type="password"
             required
             onChange={hendlerSenha}
           />
-        </label>
 
-        <button>Entrar</button>
-      </form>
+          <button onClick={goToHome}>Entrar</button>
+        </Form>
 
-      <button onClick={goToRegistrs}>Fazer Cadastro</button>
-    </div>
+      </Content>
+        <button onClick={goToRegistrs}>Fazer Cadastro</button>
+    </Container>
   );
 }
