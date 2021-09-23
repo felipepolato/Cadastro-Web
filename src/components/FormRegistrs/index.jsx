@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 /////Style/////////////
 import { Container, Content, Form, Address, User } from "./style";
@@ -14,6 +14,7 @@ export default function FormRegisters() {
   const [pis, setPis] = useState("");
   const [senha, setSenha] = useState("");
   const [cpf, setCpf] = useState("");
+  const [user, setUser] = ([])
 
   console.log(name, email, pais, municipio, estado, cep, pis, senha, cpf);
 
@@ -53,9 +54,34 @@ export default function FormRegisters() {
     setSenha(event.target.value);
   };
 
+  const sendForm = (user) => {
+
+    const body = {
+      name: user.name,
+      email: user.email,
+      country: user.country,
+      state: user.state,
+      city: user.city,
+      street: user.street,
+      number: user.number,
+      cep: user.cep,
+      cpf: user.cpf,
+      pis: user.pis,
+    };
+
+    axios.post("http://localhost:3003/user/", body)
+    .then((response)=>{
+      setUser(response.data)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  };
+
   return (
     <Container>
       <Content>
+
         <Form type="submit">
           <p>Dados do Usuário</p>
 
@@ -131,7 +157,7 @@ export default function FormRegisters() {
             </div>
           </Address>
 
-          <button>Enviar</button>
+          <button onClick={sendForm}>Enviar</button>
         </Form>
       </Content>
     </Container>

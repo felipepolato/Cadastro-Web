@@ -16,9 +16,9 @@ export default function FormLogin() {
     setCpf(event.target.value);
   };
 
-  const hendlerPis = (event) => {
-    setPis(event.target.value);
-  };
+  // const hendlerPis = (event) => {
+  //   setPis(event.target.value);
+  // };
 
   const hendlerSenha = (event) => {
     setSenha(event.target.value);
