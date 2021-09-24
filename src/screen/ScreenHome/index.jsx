@@ -5,20 +5,19 @@ import axios from "axios";
 // import {  } from "./style";
 
 export default function ScreenHome() {
-  const [name, setName] = useState("Felipe");
+  // const [name, setName] = useState("Felipe");
   const [user, setUser] = useState([]);
 
-  const useEffect =
-    (() => {
-      getUser();
-    },
-    []);
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const getUser = () => {
     axios
       .get("http://localhost:3003/user/")
       .then((response) => {
-        setName(response.data);
+        setUser(response.data);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.response.data.message);
@@ -27,15 +26,15 @@ export default function ScreenHome() {
 
   return (
     <div>
-      {user.map((item) => {
-        <div>
-          <p>Olá {item.name}!</p>
-          <div>
-            <button>Config</button>
-            <button>Sair</button>
-          </div>
-        </div>;
-      })}
+      {user &&
+        user.map((item) => {
+          return <p>Olá {item.name}!</p>;
+        })}
+
+      <div>
+        <button>Config</button>
+        <button>Sair</button>
+      </div>
     </div>
   );
 }
