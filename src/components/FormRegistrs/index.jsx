@@ -7,95 +7,109 @@ import { Container, Content, Form, Address, User } from "./style";
 export default function FormRegisters() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [pais, setPais] = useState("");
-  const [municipio, setMunicipio] = useState("");
-  const [estado, setEstado] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [cep, setCep] = useState("");
   const [pis, setPis] = useState("");
   const [senha, setSenha] = useState("");
   const [cpf, setCpf] = useState("");
-  const [user, setUser] = ([])
+  const [number, setNumber] = useState("");
+  const [street, setStreet] = useState("");
+  const [user, setUser] = useState({});
 
-  console.log(name, email, pais, municipio, estado, cep, pis, senha, cpf);
+  console.log(name, email, country, city, state, cep, pis, senha, cpf);
 
-  const hendlerName = (event) => {
+  const handlerName = (event) => {
     setName(event.target.value);
   };
 
-  const hendlerEmail = (event) => {
+  const handlerEmail = (event) => {
     setEmail(event.target.value);
   };
 
-  const hendlerPais = (event) => {
-    setPais(event.target.value);
+  const handlerCountry = (event) => {
+    setCountry(event.target.value);
   };
 
-  const hendlerEstado = (event) => {
-    setEstado(event.target.value);
+  const handlerState = (event) => {
+    setState(event.target.value);
   };
 
-  const hendlerCep = (event) => {
+  const handlerCep = (event) => {
     setCep(event.target.value);
   };
 
-  const hendlerCpf = (event) => {
+  const handlerCpf = (event) => {
     setCpf(event.target.value);
   };
 
-  const hendlerPis = (event) => {
+  const handlerPis = (event) => {
     setPis(event.target.value);
   };
 
-  const hendlerMunicipio = (event) => {
-    setMunicipio(event.target.value);
+  const handlerCity = (event) => {
+    setCity(event.target.value);
   };
 
-  const hendlerSenha = (event) => {
+  const handlerSenha = (event) => {
     setSenha(event.target.value);
   };
 
-  const sendForm = (user) => {
+  const handlerStreet = (event) => {
+    setStreet(event.target.value);
+  };
+
+  const handlerNumber = (event) => {
+    setNumber(event.target.value);
+  };
+
+  const sendForm = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    console.log("AQUI", user);
 
     const body = {
-      name: user.name,
-      email: user.email,
-      country: user.country,
-      state: user.state,
-      city: user.city,
-      street: user.street,
-      number: user.number,
-      cep: user.cep,
-      cpf: user.cpf,
-      pis: user.pis,
+      name: name,
+      email: email,
+      country: country,
+      state: state,
+      city: city,
+      street: street,
+      number: number,
+      cep: cep,
+      cpf: cpf,
+      pis: pis,
     };
 
-    axios.post("http://localhost:3003/user/", body)
-    .then((response)=>{
-      setUser(response.data)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+    axios
+      .post("http://localhost:3003/user/", body)
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <Container>
       <Content>
-
-        <Form type="submit">
+        <Form onSubmit={sendForm}>
           <p>Dados do Usuário</p>
 
           <User>
             <div>
               <label>Nome</label>
-              <input name="name" type="text" required onChange={hendlerName} />
+              <input name="name" type="text" required onChange={handlerName} />
 
               <label>E-mail</label>
               <input
                 name="email"
                 type="email"
                 required
-                onChange={hendlerEmail}
+                onChange={handlerEmail}
               />
             </div>
 
@@ -105,12 +119,12 @@ export default function FormRegisters() {
                 name="CPF"
                 id="CPF"
                 required
-                pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
-                onChange={hendlerCpf}
+                // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
+                onChange={handlerCpf}
               />
 
               <label for="PIS">PIS:</label>
-              <input name="PIS" id="PIS" required onChange={hendlerPis} />
+              <input name="PIS" id="PIS" required onChange={handlerPis} />
             </div>
           </User>
 
@@ -119,30 +133,52 @@ export default function FormRegisters() {
           <Address>
             <div>
               <label>País</label>
-              <input name="pais" type="text" required onChange={hendlerPais} />
+              <input
+                name="pais"
+                type="text"
+                required
+                onChange={handlerCountry}
+              />
 
               <label>Município</label>
               <input
                 name="municiopio"
                 type="text"
                 required
-                onChange={hendlerMunicipio}
+                onChange={handlerCity}
               />
               <div>
                 <label>Estado</label>
                 <input
-                  name="estado"
+                  name="state"
                   type="text"
                   required
-                  onChange={hendlerEstado}
+                  onChange={handlerState}
                 />
+
+                <label>Rua</label>
+                <input
+                  name="street"
+                  type="text"
+                  required
+                  onChange={handlerStreet}
+                />
+
+                <label>Numero</label>
+                <input
+                  name="number"
+                  type="text"
+                  required
+                  onChange={handlerNumber}
+                />
+
                 <label for="CEP">CEP:</label>
                 <input
                   name="CEP"
                   id="CEP"
                   required
                   pattern="\d{5}-\d{3}"
-                  onChange={hendlerCep}
+                  onChange={handlerCep}
                 />
                 <div>
                   <label>Senha:</label>
@@ -150,14 +186,14 @@ export default function FormRegisters() {
                     name="password"
                     type="password"
                     required
-                    onChange={hendlerSenha}
+                    onChange={handlerSenha}
                   />
                 </div>
               </div>
             </div>
           </Address>
 
-          <button onClick={sendForm}>Enviar</button>
+          <button type="submit">Enviar</button>
         </Form>
       </Content>
     </Container>
