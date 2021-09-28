@@ -147,49 +147,47 @@ export default function FormRegisters() {
                 required
                 onChange={handlerCity}
               />
-              <div>
-                <label>Estado</label>
-                <input
-                  name="state"
-                  type="text"
-                  required
-                  onChange={handlerState}
-                />
 
-                <label>Rua</label>
-                <input
-                  name="street"
-                  type="text"
-                  required
-                  onChange={handlerStreet}
-                />
+              <label>Estado</label>
+              <input
+                name="state"
+                type="text"
+                required
+                onChange={handlerState}
+              />
 
-                <label>Numero</label>
-                <input
-                  name="number"
-                  type="text"
-                  required
-                  onChange={handlerNumber}
-                />
+              <label>Rua</label>
+              <input
+                name="street"
+                type="text"
+                required
+                onChange={handlerStreet}
+              />
 
-                <label for="CEP">CEP:</label>
-                <input
-                  name="CEP"
-                  id="CEP"
-                  required
-                  pattern="\d{5}-\d{3}"
-                  onChange={handlerCep}
-                />
-                <div>
-                  <label>Senha:</label>
-                  <input
-                    name="password"
-                    type="password"
-                    required
-                    onChange={handlerSenha}
-                  />
-                </div>
-              </div>
+              <label>Numero</label>
+              <input
+                name="number"
+                type="text"
+                required
+                onChange={handlerNumber}
+              />
+
+              <label for="CEP">CEP:</label>
+              <input
+                name="CEP"
+                id="CEP"
+                required
+                pattern="\d{5}-\d{3}"
+                onChange={handlerCep}
+              />
+
+              <label>Senha:</label>
+              <input
+                name="password"
+                type="password"
+                required
+                onChange={handlerSenha}
+              />
             </div>
           </Address>
 
