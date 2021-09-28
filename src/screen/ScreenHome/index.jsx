@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-///style////////////////////////////////
-// import {  } from "./style";
+///style////////
+import { Container, Content, Form, Address, User } from "./style";
 
 export default function ScreenHome() {
   // const [name, setName] = useState("Felipe");
@@ -25,16 +25,16 @@ export default function ScreenHome() {
   };
 
   return (
-    <div>
+    <Container>
       {user &&
         user.map((item) => {
           return <p>Olá {item.name}!</p>;
         })}
 
-      <div>
+      <Content>
         <button>Config</button>
         <button>Sair</button>
-      </div>
-    </div>
+      </Content>
+    </Container>
   );
 }

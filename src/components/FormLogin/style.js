@@ -17,6 +17,7 @@ export const Container = styled.div`
     border-radius: 10px;
     border: transparent;
     cursor: pointer;
+    font-size: 16px;
   }
 
   p {
@@ -36,6 +37,7 @@ export const Content = styled.div`
     height: 3rem;
     width: 12rem;
     background: #ccc;
+    font-size: 16px;
   }
 
   &:hover {
@@ -56,12 +58,11 @@ export const Form = styled.form`
     margin-right: 1rem;
     margin-top: 1rem;
     font-weight: bold;
-
   }
 
   input {
     margin-bottom: 2rem;
-    height: 2rem;
+    height: 3rem;
     background: #ccc;
     border-radius: 10px;
     border: transparent;
