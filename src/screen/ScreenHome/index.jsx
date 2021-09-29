@@ -1,39 +1,27 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useHistory } from "react-router";
 
 ///style////////
 import { Container, Content, Form, Address, User } from "./style";
 
 export default function ScreenHome() {
-  // const [name, setName] = useState("Felipe");
-  const [user, setUser] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const history = useHistory();
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  const logout = () => {
+    localStorage.clear("token");
+    localStorage.clear("user");
 
-  const getUser = () => {
-    axios
-      .get("http://localhost:3003/user/")
-      .then((response) => {
-        setUser(response.data);
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.response.data.message);
-      });
+    history.push("/");
   };
 
   return (
     <Container>
-      {user &&
-        user.map((item) => {
-          return <p>Olá {item.name}!</p>;
-        })}
+      <p>Olá {user.name}!</p>
 
       <Content>
         <button>Config</button>
-        <button>Sair</button>
+        <button onClick={logout}>Sair</button>
       </Content>
     </Container>
   );

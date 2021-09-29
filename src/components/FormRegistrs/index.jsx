@@ -12,55 +12,55 @@ export default function FormRegisters() {
   const [state, setState] = useState("");
   const [cep, setCep] = useState("");
   const [pis, setPis] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setPassword] = useState("");
   const [cpf, setCpf] = useState("");
   const [number, setNumber] = useState("");
   const [street, setStreet] = useState("");
   const [user, setUser] = useState({});
 
-  console.log(name, email, country, city, state, cep, pis, senha, cpf);
+  console.log(name, email, country, city, state, cep, pis, password, cpf);
 
-  const handlerName = (event) => {
+  const handleName = (event) => {
     setName(event.target.value);
   };
 
-  const handlerEmail = (event) => {
+  const handleEmail = (event) => {
     setEmail(event.target.value);
   };
 
-  const handlerCountry = (event) => {
+  const handleCountry = (event) => {
     setCountry(event.target.value);
   };
 
-  const handlerState = (event) => {
+  const handleState = (event) => {
     setState(event.target.value);
   };
 
-  const handlerCep = (event) => {
+  const handleCep = (event) => {
     setCep(event.target.value);
   };
 
-  const handlerCpf = (event) => {
+  const handleCpf = (event) => {
     setCpf(event.target.value);
   };
 
-  const handlerPis = (event) => {
+  const handlePis = (event) => {
     setPis(event.target.value);
   };
 
-  const handlerCity = (event) => {
+  const handleCity = (event) => {
     setCity(event.target.value);
   };
 
-  const handlerSenha = (event) => {
-    setSenha(event.target.value);
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
   };
 
-  const handlerStreet = (event) => {
+  const handleStreet = (event) => {
     setStreet(event.target.value);
   };
 
-  const handlerNumber = (event) => {
+  const handleNumber = (event) => {
     setNumber(event.target.value);
   };
 
@@ -81,6 +81,7 @@ export default function FormRegisters() {
       cep: cep,
       cpf: cpf,
       pis: pis,
+      password: password,
     };
 
     axios
@@ -100,95 +101,64 @@ export default function FormRegisters() {
           <p>Dados do Usuário</p>
 
           <User>
-            <div>
-              <label>Nome</label>
-              <input name="name" type="text" required onChange={handlerName} />
+            <label htmlfor="name">Nome</label>
+            <input name="name" type="text" required onChange={handleName} />
 
-              <label>E-mail</label>
-              <input
-                name="email"
-                type="email"
-                required
-                onChange={handlerEmail}
-              />
-            </div>
+            <label>E-mail</label>
+            <input name="email" type="email" required onChange={handleEmail} />
 
-            <div>
-              <label for="CPF">CPF:</label>
-              <input
-                name="CPF"
-                id="CPF"
-                required
-                // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
-                onChange={handlerCpf}
-              />
+            <label for="CPF">CPF:</label>
+            <input
+              name="CPF"
+              id="CPF"
+              required
+              // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
+              onChange={handleCpf}
+            />
 
-              <label for="PIS">PIS:</label>
-              <input name="PIS" id="PIS" required onChange={handlerPis} />
-            </div>
+            <label for="PIS">PIS:</label>
+            <input name="PIS" id="PIS" required onChange={handlePis} />
           </User>
 
           <p>Endereço do Usuário</p>
 
           <Address>
-            <div>
-              <label>País</label>
-              <input
-                name="pais"
-                type="text"
-                required
-                onChange={handlerCountry}
-              />
+            <label>País</label>
+            <input name="pais" type="text" required onChange={handleCountry} />
 
-              <label>Município</label>
-              <input
-                name="municiopio"
-                type="text"
-                required
-                onChange={handlerCity}
-              />
+            <label>Município</label>
+            <input
+              name="municiopio"
+              type="text"
+              required
+              onChange={handleCity}
+            />
 
-              <label>Estado</label>
-              <input
-                name="state"
-                type="text"
-                required
-                onChange={handlerState}
-              />
+            <label>Estado</label>
+            <input name="state" type="text" required onChange={handleState} />
 
-              <label>Rua</label>
-              <input
-                name="street"
-                type="text"
-                required
-                onChange={handlerStreet}
-              />
+            <label>Rua</label>
+            <input name="street" type="text" required onChange={handleStreet} />
 
-              <label>Numero</label>
-              <input
-                name="number"
-                type="text"
-                required
-                onChange={handlerNumber}
-              />
+            <label>Numero</label>
+            <input name="number" type="text" required onChange={handleNumber} />
 
-              <label for="CEP">CEP:</label>
-              <input
-                name="CEP"
-                id="CEP"
-                required
-                pattern="\d{5}-\d{3}"
-                onChange={handlerCep}
-              />
+            <label for="CEP">CEP:</label>
+            <input
+              name="CEP"
+              id="CEP"
+              required
+              pattern="\d{5}-\d{3}"
+              onChange={handleCep}
+            />
 
-              <label>Senha:</label>
-              <input
-                name="password"
-                type="password"
-                required
-                onChange={handlerSenha}
-              />
-            </div>
+            <label>password:</label>
+            <input
+              name="password"
+              type="password"
+              required
+              onChange={handlePassword}
+            />
           </Address>
 
           <button type="submit">Enviar</button>

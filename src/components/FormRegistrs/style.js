@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: #ccc;
-  width: 100vw;
   height: 100vh;
 
   display: flex;
@@ -28,7 +27,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 30%;
+  width: 70%;
+  height: 60%;
   padding: 2rem;
   background: #fff;
   border-radius: 10px;
@@ -70,8 +70,8 @@ export const Form = styled.form`
     margin: 0.5rem;
   }
 
-  div{
-      text-align: center;
+  div {
+    text-align: center;
   }
 `;
 

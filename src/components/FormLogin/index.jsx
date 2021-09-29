@@ -1,72 +1,89 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import axios from "axios";
 
 /////Style/////////////
 import { Container, Content, Form } from "./style";
 
 export default function FormLogin() {
-  const [pis, setPis] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
 
   const history = useHistory("");
 
-  const hendlerCpf = (event) => {
+  const handleCpf = (event) => {
     setCpf(event.target.value);
   };
 
-  // const hendlerPis = (event) => {
-  //   setPis(event.target.value);
-  // };
-
-  const hendlerSenha = (event) => {
-    setSenha(event.target.value);
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
   };
 
-  const hendlerEmail = (event) => {
+  const handleEmail = (event) => {
     setEmail(event.target.value);
   };
 
   const goToRegistrs = () => {
-    history.push("/");
+    history.push("/registers");
   };
 
-  const goToHome = () => {
-    history.push("/home");
+  const postLogin = () => {
+    const body = {
+      cpf: cpf,
+      password: password,
+      email: email,
+    };
+
+    axios
+      .post("http://localhost:3003/user/authenticate/", body)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
+        history.push("/home");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    postLogin();
   };
 
   return (
     <Container>
-        <p>Olá, Visitante!</p>
+      <p>Olá, Visitante!</p>
       <Content>
-
-        <Form type="submit">
+        <Form onSubmit={handleSubmit}>
           <label for="CPF">CPF:</label>
           <input
             name="CPF"
             id="CPF"
             required
             pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
-            onChange={hendlerCpf}
+            onChange={handleCpf}
           />
 
           <label>E-mail/ PIS:</label>
-          <input name="email" type="email" required onChange={hendlerEmail} />
+          <input name="email" type="email" required onChange={handleEmail} />
 
-          <label>Senha:</label>
+          <label>Password:</label>
           <input
             name="password"
             type="password"
             required
-            onChange={hendlerSenha}
+            onChange={handlePassword}
           />
 
-          <button onClick={goToHome}>Entrar</button>
+          <button type="submit">Entrar</button>
         </Form>
-
       </Content>
-        <button onClick={goToRegistrs}>Fazer Cadastro</button>
+      <button onClick={goToRegistrs}>Fazer Cadastro</button>
     </Container>
   );
 }
