@@ -13,11 +13,14 @@ export const Container = styled.div`
   button {
     height: 8%;
     width: 24%;
-    margin-top: 1.5rem;
+    margin-top: 3%;
     border-radius: 10px;
     border: transparent;
     cursor: pointer;
-    font-size: 16px;
+    background: blue;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: bold;
 
     &:hover {
       box-shadow: 0px 0px 28px 8px rgba(0, 0, 255, 0.5);
@@ -43,8 +46,10 @@ export const Content = styled.div`
   button {
     height: 4rem;
     width: 70%;
-    background: #ccc;
-    font-size: 16px;
+    background: blue;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: bold;
 
     &:hover {
       box-shadow: 0px 0px 28px 8px rgba(0, 0, 255, 0.5);

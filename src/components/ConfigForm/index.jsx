@@ -24,6 +24,10 @@ const deleteUser = () =>{
     })
 }
 
+const goToHome = () =>{
+    history.push("/home")
+}
+
   return (
     <Container>
       <Content>
@@ -31,6 +35,7 @@ const deleteUser = () =>{
         <input type="text" placeholder="senha nova" />
         <button> Trocar Senha</button>
         <button onClick={deleteUser}> Excluir Conta</button>
+        <button onClick={goToHome}> Voltar</button>
       </Content>
     </Container>
   );

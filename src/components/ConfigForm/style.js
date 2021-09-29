@@ -27,8 +27,10 @@ export const Content = styled.div`
     margin: 3%;
     height: 15%;
     width: 70%;
-    background: #ccc;
-    font-size: 16px;
+    background: blue;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
     border: transparent;
     border-radius: 10px;
 

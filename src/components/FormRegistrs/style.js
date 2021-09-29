@@ -33,8 +33,10 @@ export const Content = styled.div`
     border-radius: 10px;
     border: transparent;
     margin-top: 60%;
+    background: blue;
+    font-size: 20px;
+    color: #FFF;
     font-weight: bold;
-    font-size: 16px;
 
     &:hover {
       box-shadow: 0px 0px 28px 8px rgba(0, 0, 255, 0.5);
