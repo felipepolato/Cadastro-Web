@@ -11,17 +11,25 @@ export const Container = styled.div`
   flex-direction: column;
 
   button {
-    height: 3rem;
-    width: 12rem;
-    margin-top: 1.5rem;
+    height: 8%;
+    width: 24%;
+    margin-top: 3%;
     border-radius: 10px;
     border: transparent;
     cursor: pointer;
-    font-size: 16px;
+    background: blue;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: bold;
+
+    &:hover {
+      box-shadow: 0px 0px 28px 8px rgba(0, 0, 255, 0.5);
+    }
   }
 
   p {
-    font-size: 20px;
+    font-size: 25px;
+    border-bottom: 1px solid blue;
     font-weight: bold;
     color: blue;
   }
@@ -29,33 +37,35 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 20%;
+  height: 50%;
+  padding: 2%;
   background: #fff;
   border-radius: 10px;
+  border: 2px solid blue;
 
   button {
-    margin-bottom: 1rem;
-    height: 3rem;
-    width: 12rem;
-    background: #ccc;
-    font-size: 16px;
+    height: 4rem;
+    width: 70%;
+    background: blue;
+    font-size: 20px;
+    color: #FFF;
+    font-weight: bold;
+
+    &:hover {
+      box-shadow: 0px 0px 28px 8px rgba(0, 0, 255, 0.5);
+    }
   }
 
-  &:hover {
-    box-shadow: 0px 0px 28px 8px rgba(0, 0, 0, 0.23);
-  }
+  box-shadow: 0px 0px 28px 8px rgba(0, 0, 0, 0.23);
 `;
 
 export const Form = styled.form`
-  border: 2px solid blue;
-  border-radius: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
   label {
-    margin-right: 1rem;
     margin-top: 1rem;
     font-weight: bold;
   }
@@ -63,6 +73,7 @@ export const Form = styled.form`
   input {
     margin-bottom: 2rem;
     height: 3rem;
+    width: 70%;
     background: #ccc;
     border-radius: 10px;
     border: transparent;

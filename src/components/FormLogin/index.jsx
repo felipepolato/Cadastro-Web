@@ -24,8 +24,8 @@ export default function FormLogin() {
     setEmail(event.target.value);
   };
 
-  const goToRegistrs = () => {
-    history.push("/registers");
+  const goToRegister = () => {
+    history.push("/register");
   };
 
   const postLogin = () => {
@@ -83,7 +83,7 @@ export default function FormLogin() {
           <button type="submit">Entrar</button>
         </Form>
       </Content>
-      <button onClick={goToRegistrs}>Fazer Cadastro</button>
+      <button onClick={goToRegister}>Fazer Cadastro</button>
     </Container>
   );
 }

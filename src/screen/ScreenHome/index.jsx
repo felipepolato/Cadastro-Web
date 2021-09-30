@@ -15,12 +15,16 @@ export default function ScreenHome() {
     history.push("/");
   };
 
+  const goToConfig = () => {
+    history.push("/config");
+  };
+
   return (
     <Container>
       <p>Olá {user.name}!</p>
 
       <Content>
-        <button>Config</button>
+        <button onClick={goToConfig}>Configuração</button>
         <button onClick={logout}>Sair</button>
       </Content>
     </Container>

@@ -68,7 +68,7 @@ export default function FormRegisters() {
     event.preventDefault();
     event.stopPropagation();
 
-    console.log("AQUI", user);
+    const token = localStorage.getItem("token");
 
     const body = {
       name: name,
@@ -85,7 +85,9 @@ export default function FormRegisters() {
     };
 
     axios
-      .post("http://localhost:3003/user/", body)
+      .post("http://localhost:3003/user/", body, {
+        headers: { "x-access-token": token },
+      })
       .then((response) => {
         setUser(response.data);
       })
@@ -98,13 +100,12 @@ export default function FormRegisters() {
     <Container>
       <Content>
         <Form onSubmit={sendForm}>
-          <p>Dados do Usuário</p>
-
           <User>
-            <label htmlfor="name">Nome</label>
+            <p>Dados do Usuário</p>
+            <label htmlfor="name">Nome:</label>
             <input name="name" type="text" required onChange={handleName} />
 
-            <label>E-mail</label>
+            <label>E-mail:</label>
             <input name="email" type="email" required onChange={handleEmail} />
 
             <label for="CPF">CPF:</label>
@@ -118,15 +119,22 @@ export default function FormRegisters() {
 
             <label for="PIS">PIS:</label>
             <input name="PIS" id="PIS" required onChange={handlePis} />
+
+            <label>Senha:</label>
+            <input
+              name="password"
+              type="password"
+              required
+              onChange={handlePassword}
+            />
           </User>
 
-          <p>Endereço do Usuário</p>
-
           <Address>
-            <label>País</label>
+            <p>Endereço do Usuário</p>
+            <label>País:</label>
             <input name="pais" type="text" required onChange={handleCountry} />
 
-            <label>Município</label>
+            <label>Município:</label>
             <input
               name="municiopio"
               type="text"
@@ -134,13 +142,13 @@ export default function FormRegisters() {
               onChange={handleCity}
             />
 
-            <label>Estado</label>
+            <label>Estado:</label>
             <input name="state" type="text" required onChange={handleState} />
 
-            <label>Rua</label>
+            <label>Rua:</label>
             <input name="street" type="text" required onChange={handleStreet} />
 
-            <label>Numero</label>
+            <label>Numero:</label>
             <input name="number" type="text" required onChange={handleNumber} />
 
             <label for="CEP">CEP:</label>
@@ -152,16 +160,8 @@ export default function FormRegisters() {
               onChange={handleCep}
             />
 
-            <label>password:</label>
-            <input
-              name="password"
-              type="password"
-              required
-              onChange={handlePassword}
-            />
+            <button type="submit">Enviar</button>
           </Address>
-
-          <button type="submit">Enviar</button>
         </Form>
       </Content>
     </Container>
