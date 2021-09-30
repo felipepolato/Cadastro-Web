@@ -3,23 +3,36 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 /////Style/////////////
-import { Container, Content, Form, User, Address } from "./style";
+import {
+  Container,
+  Content,
+  Form,
+  User,
+  Address,
+  Password,
+  ContainerForm,
+  ButtonBox,
+} from "./style";
 
 export default function ConfigForm() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  // console.log();
+  const [updatedUser, setUpdatedUser] = useState(user);
+
   const [password, setPassword] = useState();
   const [newPassword, setNewPassword] = useState();
   const history = useHistory();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [cep, setCep] = useState("");
-  const [pis, setPis] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [number, setNumber] = useState("");
-  const [street, setStreet] = useState("");
-  const [user, setUser] = useState({});
+
+  const [name, setName] = useState(updatedUser.name);
+  const [email, setEmail] = useState(updatedUser.email);
+  const [country, setCountry] = useState(updatedUser.country);
+  const [city, setCity] = useState(updatedUser.city);
+  const [state, setState] = useState(updatedUser.state);
+  const [cep, setCep] = useState(updatedUser.cep);
+  const [pis, setPis] = useState(updatedUser.pis);
+  const [cpf, setCpf] = useState(updatedUser.cpf);
+  const [number, setNumber] = useState(updatedUser.number);
+  const [street, setStreet] = useState(updatedUser.street);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -69,6 +82,61 @@ export default function ConfigForm() {
     setNewPassword(event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    changeRegidters();
+  };
+
+  ////Alterar Cadastro//////
+  const changeRegidters = () => {
+    const token = localStorage.getItem("token");
+
+    const body = {
+      name: name,
+      email: email,
+      country: country,
+      state: state,
+      city: city,
+      street: street,
+      number: number,
+      cep: cep,
+      cpf: cpf,
+      pis: pis,
+      password: password,
+    };
+
+    axios
+      .put("http://localhost:3003/user", body, {
+        headers: {
+          "x-access-token": token,
+        },
+      })
+      .then((res) => {
+        alert("Cadastro Alterado!");
+
+        ///Pegar Usuário
+        axios
+          .get("http://localhost:3003/user", {
+            headers: {
+              "x-access-token": token,
+            },
+          })
+          .then((res) => {
+            localStorage.setItem("user", JSON.stringify(res.data));
+            setUpdatedUser(res.data);
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
+  ////Auterar senha/////
   const changePassword = () => {
     const token = localStorage.getItem("token");
 
@@ -78,7 +146,7 @@ export default function ConfigForm() {
     };
 
     axios
-      .put("http://localhost:3003/user", body, {
+      .put("http://localhost:3003/user/password", body, {
         headers: {
           "x-access-token": token,
         },
@@ -119,82 +187,138 @@ export default function ConfigForm() {
   return (
     <Container>
       <Content>
-        <Form >
-          <User>
-            <p>Novos Dados do Usuário</p>
-            <label htmlfor="name">Nome:</label>
-            <input name="name" type="text" required onChange={handleName} />
+        <Form onSubmit={handleSubmit}>
+          <ContainerForm>
+            <User>
+              <p>Novos Dados do Usuário</p>
+              <label htmlfor="name">Nome:</label>
+              <input
+                name="name"
+                type="text"
+                required
+                onChange={handleName}
+                value={name}
+              />
 
-            <label>E-mail:</label>
-            <input name="email" type="email" required onChange={handleEmail} />
+              <label>E-mail:</label>
+              <input
+                name="email"
+                type="email"
+                value={email}
+                required
+                onChange={handleEmail}
+              />
 
-            <label for="CPF">CPF:</label>
-            <input
-              name="CPF"
-              id="CPF"
-              required
-              // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
-              onChange={handleCpf}
-            />
+              <label for="CPF">CPF:</label>
+              <input
+                name="CPF"
+                id="CPF"
+                value={cpf}
+                required
+                // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
+                onChange={handleCpf}
+              />
 
-            <label for="PIS">PIS:</label>
-            <input name="PIS" id="PIS" required onChange={handlePis} />
+              <label for="PIS">PIS:</label>
+              <input
+                name="PIS"
+                id="PIS"
+                required
+                onChange={handlePis}
+                value={pis}
+              />
+            </User>
 
+            <Address>
+              <p>Novo Endereço do Usuário</p>
+              <label>País:</label>
+              <input
+                name="pais"
+                type="text"
+                value={country}
+                required
+                onChange={handleCountry}
+              />
+
+              <label>Município:</label>
+              <input
+                name="municiopio"
+                type="text"
+                value={city}
+                required
+                onChange={handleCity}
+              />
+
+              <label>Estado:</label>
+              <input
+                name="state"
+                type="text"
+                required
+                onChange={handleState}
+                value={state}
+              />
+
+              <label>Rua:</label>
+              <input
+                value={street}
+                name="street"
+                type="text"
+                required
+                onChange={handleStreet}
+              />
+
+              <label>Numero:</label>
+              <input
+                name="number"
+                type="text"
+                required
+                value={number}
+                onChange={handleNumber}
+              />
+
+              <label for="CEP">CEP:</label>
+              <input
+                name="CEP"
+                id="CEP"
+                value={cep}
+                required
+                pattern="\d{5}-\d{3}"
+                onChange={handleCep}
+              />
+            </Address>
+          </ContainerForm>
+          <button type="submit">Salvar Alteraçãoes</button>
+        </Form>
+
+        <Password>
+          <div>
             <label for="password">Senha:</label>
             <input
               id="password"
               type="password"
               placeholder="senha atual"
+              value={password}
               onChange={handlePassword}
             />
-
-            <label for="newPassword">Nova Senha</label>
+          </div>
+          <div>
+            <label for="newPassword">Nova Senha:</label>
             <input
               id="newPassword"
               type="password"
               placeholder="senha nova"
               onChange={handleNewPassword}
+              value={newPassword}
             />
-          </User>
-
-          <Address>
-            <p>Novo Endereço do Usuário</p>
-            <label>País:</label>
-            <input name="pais" type="text" required onChange={handleCountry} />
-
-            <label>Município:</label>
-            <input
-              name="municiopio"
-              type="text"
-              required
-              onChange={handleCity}
-            />
-
-            <label>Estado:</label>
-            <input name="state" type="text" required onChange={handleState} />
-
-            <label>Rua:</label>
-            <input name="street" type="text" required onChange={handleStreet} />
-
-            <label>Numero:</label>
-            <input name="number" type="text" required onChange={handleNumber} />
-
-            <label for="CEP">CEP:</label>
-            <input
-              name="CEP"
-              id="CEP"
-              required
-              pattern="\d{5}-\d{3}"
-              onChange={handleCep}
-            />
-
-            <button type="submit">Enviar</button>
-          </Address>
-        </Form>
+          </div>
+        </Password>
 
         <button onClick={changePassword}> Trocar Senha</button>
-        <button onClick={deleteUser}> Excluir Conta</button>
-        <button onClick={goToHome}> Voltar</button>
+
+        <ButtonBox>
+          <button onClick={deleteUser}> Excluir Conta</button>
+          <button onClick={goToHome}> Voltar</button>
+        </ButtonBox>
       </Content>
     </Container>
   );

@@ -70,7 +70,7 @@ export default function FormLogin() {
           />
 
           <label>E-mail/ PIS:</label>
-          <input name="email" type="email" required onChange={handleEmail} />
+          <input name="email" required onChange={handleEmail} />
 
           <label>Password:</label>
           <input

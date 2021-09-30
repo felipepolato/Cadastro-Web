@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 20%;
-  height: 50%;
+  height: 40%;
   padding: 2%;
   background: #fff;
   border-radius: 10px;
@@ -40,7 +40,7 @@ export const Content = styled.div`
     border-radius: 10px;
     background: blue;
     font-size: 20px;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
 
     &:hover {

@@ -11,15 +11,15 @@ export const Container = styled.div`
   flex-direction: column;
 
   button {
+    margin-top: 3%;
     height: 8%;
     width: 24%;
-    margin-top: 3%;
     border-radius: 10px;
     border: transparent;
     cursor: pointer;
     background: blue;
     font-size: 20px;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
 
     &:hover {
@@ -37,7 +37,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 20%;
-  height: 50%;
+  height: 60%;
   padding: 2%;
   background: #fff;
   border-radius: 10px;
@@ -48,7 +48,7 @@ export const Content = styled.div`
     width: 70%;
     background: blue;
     font-size: 20px;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
 
     &:hover {
