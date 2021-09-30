@@ -100,7 +100,7 @@ export default function FormRegisters() {
         history.push("/");
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.response.data.error);
       });
   };
 

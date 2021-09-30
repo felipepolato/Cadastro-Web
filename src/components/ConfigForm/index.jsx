@@ -16,7 +16,6 @@ import {
 
 export default function ConfigForm() {
   const user = JSON.parse(localStorage.getItem("user"));
-  // console.log();
   const [updatedUser, setUpdatedUser] = useState(user);
 
   const [password, setPassword] = useState();
