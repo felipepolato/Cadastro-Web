@@ -20,8 +20,6 @@ export default function FormRegisters() {
   const [user, setUser] = useState({});
   const history = useHistory();
 
-  console.log(name, email, country, city, state, cep, pis, password, cpf);
-
   const handleName = (event) => {
     setName(event.target.value);
   };
