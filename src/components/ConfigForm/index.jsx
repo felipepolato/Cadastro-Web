@@ -128,11 +128,11 @@ export default function ConfigForm() {
             setUpdatedUser(res.data);
           })
           .catch((error) => {
-            alert(error);
+            alert(error.response.data.error);
           });
       })
       .catch((error) => {
-        alert(error);
+        alert(error.response.data.error);
       });
   };
 
@@ -156,7 +156,7 @@ export default function ConfigForm() {
         history.push("/home");
       })
       .catch((error) => {
-        alert(error);
+        alert(error.response.data.error);
       });
   };
 
@@ -176,7 +176,7 @@ export default function ConfigForm() {
         history.push("/");
       })
       .catch((error) => {
-        alert(error);
+        alert(error.message);
       });
   };
 

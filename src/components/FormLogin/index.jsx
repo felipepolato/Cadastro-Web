@@ -44,7 +44,9 @@ export default function FormLogin() {
         history.push("/home");
       })
       .catch((error) => {
-        alert(error);
+        console.log(error.response.data.error);
+
+        alert(error.response.data.error);
       });
   };
 
