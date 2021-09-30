@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: #ccc;
-  height: 100vh;
+  height: 100%;
 
   display: flex;
   justify-content: center;
@@ -17,8 +17,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 25%;
-  height: 80%;
+  width: 50%;
+  height: 60%;
   padding: 2%;
   background: #fff;
   border-radius: 10px;
@@ -29,13 +29,12 @@ export const Content = styled.div`
   button {
     width: 100%;
     height: 4rem;
-    background: #ccc;
     border-radius: 10px;
     border: transparent;
-    margin-top: 40%;
+    margin-top: 10%;
     background: blue;
     font-size: 20px;
-    color: #FFF;
+    color: #fff;
     font-weight: bold;
 
     &:hover {
@@ -47,9 +46,24 @@ export const Content = styled.div`
 export const Form = styled.form`
   border-radius: 10px;
 
+  button {
+    width: 100%;
+  }
+
+  div {
+    text-align: center;
+  }
+`;
+
+export const ContainerForm = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
+`;
+
+export const User = styled.div`
+  display: flex;
+  flex-direction: column;
 
   label {
     font-weight: bold;
@@ -61,23 +75,62 @@ export const Form = styled.form`
   }
 
   input {
-    height: 2.5rem;
+    height: 2rem;
+    padding: 8px;
+    background: #ccc;
+    border-radius: 10px;
+    border: transparent;
+  }
+`;
+
+export const Address = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-weight: bold;
+    margin-top: 10%;
+    margin-bottom: 3%;
+    font-size: 14px;
+
+    display: flex;
+  }
+
+  input {
+    height: 2rem;
+    padding: 8px;
+    background: #ccc;
+    border-radius: 10px;
+    border: transparent;
+  }
+`;
+
+export const Password = styled.div`
+  margin-top: 15%;
+
+  display: flex;
+
+  label {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  input {
+    height: 2rem;
+    padding: 8px;
     background: #ccc;
     border-radius: 10px;
     border: transparent;
   }
 
   div {
-    text-align: center;
+    margin-left: 10%;
+
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-export const User = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Address = styled.div`
-  display: flex;
-  flex-direction: column;
+export const ButtonBox = styled.div`
+  margin-top: 10%;
 `;

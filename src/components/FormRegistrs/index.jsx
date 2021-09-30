@@ -3,7 +3,14 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 /////Style/////////////
-import { Container, Content, Form, Address, User } from "./style";
+import {
+  Container,
+  Content,
+  Form,
+  Address,
+  User,
+  ContainerForm,
+} from "./style";
 
 export default function FormRegisters() {
   const [name, setName] = useState("");
@@ -101,68 +108,115 @@ export default function FormRegisters() {
     <Container>
       <Content>
         <Form onSubmit={sendForm}>
-          <User>
-            <p>Dados do Usuário</p>
-            <label htmlfor="name">Nome:</label>
-            <input name="name" type="text" required onChange={handleName} />
+          <ContainerForm>
+            <User>
+              <p>Dados do Usuário</p>
+              <label htmlfor="name">Nome:</label>
+              <input
+                name="name"
+                type="text"
+                required
+                onChange={handleName}
+                value={name}
+              />
 
-            <label>E-mail:</label>
-            <input name="email" type="email" required onChange={handleEmail} />
+              <label>E-mail:</label>
+              <input
+                name="email"
+                type="email"
+                value={email}
+                required
+                onChange={handleEmail}
+              />
 
-            <label for="CPF">CPF:</label>
-            <input
-              name="CPF"
-              id="CPF"
-              required
-              // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
-              onChange={handleCpf}
-            />
+              <label for="CPF">CPF:</label>
+              <input
+                name="CPF"
+                id="CPF"
+                value={cpf}
+                required
+                // pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/"
+                onChange={handleCpf}
+              />
 
-            <label for="PIS">PIS:</label>
-            <input name="PIS" id="PIS" required onChange={handlePis} />
+              <label for="PIS">PIS:</label>
+              <input
+                name="PIS"
+                id="PIS"
+                required
+                onChange={handlePis}
+                value={pis}
+              />
 
-            <label>Senha:</label>
-            <input
-              name="password"
-              type="password"
-              required
-              onChange={handlePassword}
-            />
-          </User>
+              <label for="password">Senha:</label>
+              <input
+                id="password"
+                type="password"
+                placeholder="senha atual"
+                value={password}
+                onChange={handlePassword}
+              />
+            </User>
 
-          <Address>
-            <p>Endereço do Usuário</p>
-            <label>País:</label>
-            <input name="pais" type="text" required onChange={handleCountry} />
+            <Address>
+              <p>Endereço do Usuário</p>
+              <label>País:</label>
+              <input
+                name="pais"
+                type="text"
+                value={country}
+                required
+                onChange={handleCountry}
+              />
 
-            <label>Município:</label>
-            <input
-              name="municiopio"
-              type="text"
-              required
-              onChange={handleCity}
-            />
+              <label>Município:</label>
+              <input
+                name="municiopio"
+                type="text"
+                value={city}
+                required
+                onChange={handleCity}
+              />
 
-            <label>Estado:</label>
-            <input name="state" type="text" required onChange={handleState} />
+              <label>Estado:</label>
+              <input
+                name="state"
+                type="text"
+                required
+                onChange={handleState}
+                value={state}
+              />
 
-            <label>Rua:</label>
-            <input name="street" type="text" required onChange={handleStreet} />
+              <label>Rua:</label>
+              <input
+                value={street}
+                name="street"
+                type="text"
+                required
+                onChange={handleStreet}
+              />
 
-            <label>Numero:</label>
-            <input name="number" type="text" required onChange={handleNumber} />
+              <label>Numero:</label>
+              <input
+                name="number"
+                type="text"
+                required
+                value={number}
+                onChange={handleNumber}
+              />
 
-            <label for="CEP">CEP:</label>
-            <input
-              name="CEP"
-              id="CEP"
-              required
-              pattern="\d{5}-\d{3}"
-              onChange={handleCep}
-            />
-
-            <button type="submit">Enviar</button>
-          </Address>
+              <label for="CEP">CEP:</label>
+              <input
+                name="CEP"
+                id="CEP"
+                value={cep}
+                required
+                pattern="\d{5}-\d{3}"
+                onChange={handleCep}
+              />
+            </Address>
+          </ContainerForm>
+          <button type="submit">Enviar</button>
         </Form>
       </Content>
     </Container>
