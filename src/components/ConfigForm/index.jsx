@@ -16,7 +16,6 @@ import {
 
 export default function ConfigForm() {
   const user = JSON.parse(localStorage.getItem("user"));
-  // console.log();
   const [updatedUser, setUpdatedUser] = useState(user);
 
   const [password, setPassword] = useState();
@@ -128,11 +127,11 @@ export default function ConfigForm() {
             setUpdatedUser(res.data);
           })
           .catch((error) => {
-            alert(error);
+            alert(error.response.data.error);
           });
       })
       .catch((error) => {
-        alert(error);
+        alert(error.response.data.error);
       });
   };
 
@@ -156,7 +155,7 @@ export default function ConfigForm() {
         history.push("/home");
       })
       .catch((error) => {
-        alert(error);
+        alert(error.response.data.error);
       });
   };
 
@@ -176,7 +175,7 @@ export default function ConfigForm() {
         history.push("/");
       })
       .catch((error) => {
-        alert(error);
+        alert(error.message);
       });
   };
 
