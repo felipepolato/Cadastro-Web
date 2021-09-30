@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 /////Style/////////////
@@ -17,6 +18,7 @@ export default function FormRegisters() {
   const [number, setNumber] = useState("");
   const [street, setStreet] = useState("");
   const [user, setUser] = useState({});
+  const history = useHistory();
 
   console.log(name, email, country, city, state, cep, pis, password, cpf);
 
@@ -90,6 +92,7 @@ export default function FormRegisters() {
       })
       .then((response) => {
         setUser(response.data);
+        history.push("/");
       })
       .catch((error) => {
         console.log(error);
