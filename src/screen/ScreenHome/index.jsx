@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router";
 
 ///style////////
-import { Container, Content, Form, Address, User } from "./style";
+import { Container, Content } from "./style";
 
 export default function ScreenHome() {
   const user = JSON.parse(localStorage.getItem("user"));
